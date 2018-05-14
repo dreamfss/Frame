@@ -50,26 +50,26 @@ class Test_Order(unittest.TestCase):
             WebDriverWait(self.driver, 10).until(lambda driver:  # 查询加入购物车按钮
                                                  self.driver.find_element(*self.purchase_quantity))
             p = self.driver.find_element(*self.purchase_quantity)
-            value = p.get_attribute("value")
-
-
-
-
-
-
-            print(value)
+            value = int(p.get_attribute("value"))
+            print(type(value))
+            f = random.randint(1, 10)
+            print(type(f))
+            for i in range(f):
+                if f > value:
+                    self.driver.find_element(*self.increase).click()
+            print(3)
             time.sleep(3)
             logger.info('搜索成功')  # 登录成功日志
             self.sub_tearDown()  # 调用退出方法
         except Exception as msg:
             # 代码执行错误时，打印图片
             nowTime = time.strftime("%Y.%m.%d.%H.%M.%S")+".test_003_order"  # 图片名称格式
-            print(type(nowTime))
-            p = self.driver.get_screenshot_as_file("D:\\TestCase\\Hypweb.Frame\\Test_framework\\log\\1.png")
-            print(type(p))
+            # print(type(nowTime))
             self.driver.get_screenshot_as_file(
                 "D:\\TestCase\\Hypweb.Frame\\Test_framework\\log\\%s.png" % nowTime)  # 截屏图片
-            logger.info("test_001_login.%s" % msg)
+            # print(type(msg))
+            age = "test_003_login:"
+            logger.info("%s：%s" % (age, msg))
             self.sub_tearDown()  # 调用退出方法
 
 
